@@ -1,0 +1,59 @@
+<div id="sidebar" [@sideMenu]='stateMenu'>
+  <div class="menu" (click)='openSideMenu()' [@burgerSlide]='burgerState'>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul> 
+ </div>
+       <h1 class="title">Awesome Chat</h1>
+       <div class="info">
+           <div class="client">
+             <img src="{{photo}}" alt="">
+               <p class="input">{{name}}</p>
+           </div>
+
+     
+       </div>
+       <button class="logButton" *ngIf="!name" (click)="login()">Login</button>
+       <button class="logButton" *ngIf="name" (click)="logout()">Logout</button>
+   </div>
+    
+    <div id="chat" [@sideMenu]='state' #chat >
+
+      
+        <!--<div class="bubble attachment">
+           <img class="icon" src="" alt="icon">
+           <div class="preview">
+             
+               <img src="Sea-of-Grass-Jess-Alford2.jpg" alt="resources">
+           </div>
+            <div class="content">
+                <h2 class="title">Pixel Disegn Resources V1</h2>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam optio quis quasi fugiat esse voluptatibus, iusto minima in tempore eveniet doloremque architecto rerum, ratione, maxime sunt nobis, quae commodi quos.</p>
+                <div class="buttons_wrapper">
+                    <a href="" class="button button_blue">View Full Size</a>
+                    <a href="" class="button button_download">Download</a>
+                </div>
+            </div>
+        </div>-->
+        <div [className]=" photo === item.photo ? 'bubble client' : 'bubble'" *ngFor="let item of items | async"  >
+
+            <div class="content"  mdTooltip="{{item.date}}" >
+                <div class="avatar">
+                    <img src="{{item.photo}}" alt="here will go some avatar, maybe">
+                    <p>{{item.name}}</p>
+                </div>
+                <p class="copy">{{item.message}}</p>
+            </div>
+            <p class="time"></p>
+        </div>
+        
+       <div id="input" *ngIf="name" > 
+            <div class="avatar">
+                <img src="{{photo}}" alt="avatar">
+            </div>
+            <input type="text" class="textarea" (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" name="comment" id="comment" placeholder="say something">
+        </div>
+    
+    </div>    

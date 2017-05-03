@@ -1,0 +1,233 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+$main: #393f42;
+$secondary: #cedce4;
+$bg: #f7f8fb;
+$highlight: #50bbf2;
+$copy: #727678;
+$white: #FFFFFF;
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Avenir-Book;
+    background: $bg;
+    padding-right: 30px;
+    &::-webkit-scrollbar{
+    display: none;
+}
+}
+
+/* Let's get this party started */
+
+.button {
+    padding: 1em 1.5em;
+    border-radius: .35em;
+    text-decoration: none;
+    font-weight: 400;
+    transition: background .4s ease-in-out;
+    font-size: .9em;
+}
+.button_blue {
+    background: $highlight;
+    color: $white;
+    &:hover {
+        background: darken($highlight, 20%);
+    }
+}
+.button_download {
+    background: $secondary;
+    color: $white;
+    &:hover {
+        background: darken($secondary, 20%);
+    }
+}
+
+#sidebar{
+    position: fixed;
+    left: 100px;
+    background: $bg;
+    width: 300px;
+    top: 0px;
+    border-right: 1px solid darken($bg, 20%);
+    box-shadow: 5px 0px 4px 0px black;
+    overflow: hidden;
+    height: 100%;
+    .title{
+        font-size: 2.25em;
+        font-weight: 400;
+        line-height: 1.35;
+        color: $main;
+        margin: 2.5em 0 1em 0;
+    }
+    .info {
+        .input {
+            font-size: 1.35em;
+            color: $copy;
+            margin: 1.25em 0 0 0;
+        }
+    }
+    .description {
+        font-size: .85em;
+        font-weight: 700;
+        color: $main;
+        margin: 0;
+    }
+    hr {
+        width: 2em;
+        height: 0;
+        margin: 3em 0;
+        border-top: 2px solid $secondary;
+    }
+
+}
+
+#chat {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 50px 20px 500px;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+ 
+    .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+                overflow: hidden;
+                float: left;
+                margin: 2em;
+                img {
+                    height: 100%;
+                }
+            }
+    .bubble{
+        margin-bottom: 3em;
+        .content {
+            background: $white;
+            box-shadow: 0px 9px 30px 0px rgba(44,55,79,0.07);
+            border-radius: 25px 25px 25px 2px;
+            display: inline-block;
+                &::before, &::after {
+                    content: '';
+                    display: table;
+                    
+                    }
+                &::after {
+                    clear: both;
+                    }
+            
+            .copy {
+                font-size: 1em;
+                line-height: 1.75;
+                color: $copy;
+                padding:  2em 1.5em 1.5em 7em;
+                margin: 0;
+            }
+        }
+        .time {
+            font-weight: 700;
+            font-size: .8em;
+            clear: both;
+            color: $main;
+        }
+    }
+    .bubble.client {
+        .content {
+            background: #fafbff;
+            border-radius: 25px 25px 2px 25px;
+            float: right;
+            .avatar {
+                float: right;
+            }
+            .copy {
+                padding: 2em 6.5em 1.5em 1.5em;
+                
+            }
+        }
+        .time {
+            text-align: right;
+        }
+    }
+    .bubble.attachment {
+        width: 100%;
+        position: relative;
+        margin: 5em 0 2em;
+        clear: both;
+        .preview {
+            width: 15em;
+            border-radius: .5em;
+            overflow: hidden;
+            box-shadow: 0px 9px 30px 0px rgba(44,55,79,0.34);
+            position: absolute;
+            bottom: 2em;
+            left: 2em;
+            img {
+                width: 100%;
+            }
+        }
+        .content {
+            width: 100%;
+            min-height: 22em;
+            padding: 2em 5em 2em 20em;
+            .title {
+                font-size: 1.5em;
+                color: $main;
+                font-weight: 400;
+                
+                
+            }
+            .description {
+                font-size: 1.1em;
+                color: $copy;
+                line-height: 1.65em;
+            }
+            .buttons_wrapper {
+                margin-top: 3em;
+                .button {
+                    margin-right: 1em;
+                }
+            }
+        }
+        .icon {
+            position: absolute;
+            right: 2em;
+            top: 2em;
+        }
+    }
+    #input {
+        width: 100%;
+        position: relative;
+        .avatar {
+            position: absolute;
+            left: 2em;
+            top: 2em;
+            margin: 0;
+        }
+        .textarea{
+            background: $white;
+            box-shadow: 0px 9px 30px 0px rgba(44,55,79,0.07);
+            border-radius: 25px 25px 25px 2px;
+            border: none;
+            width: 100%;
+            height: 10em;
+            font-size: 1.1em;
+            padding: 2.25em 2em 2em 5.5em;
+             outline: none;
+            &:focus {
+                box-shadow: inset 0px 0px 10px $copy;
+            }
+        }
+    }
+    
+}
+
+.element {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}
